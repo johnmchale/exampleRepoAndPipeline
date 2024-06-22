@@ -8,7 +8,7 @@ on:
       - prod
 
 permissions:
-  contents: write # Ensure the token has write permissions to push changes
+  contents: write # Ensure the token has write permissions
 
 jobs:
   deploy:
@@ -23,10 +23,14 @@ jobs:
         with:
           node-version: "20"
 
+      - name: Create .nojekyll file
+        run: echo "" > .nojekyll
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: main # Ensure we're deploying to the main branch
+          publish_branch: main
           publish_dir: ./
           destination_dir: ${{ github.ref_name }} # Deploy to a directory named after the branch
+
