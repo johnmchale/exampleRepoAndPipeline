@@ -30,7 +30,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: main
-          publish_dir: ./
+          publish_branch: gh-pages # Use gh-pages branch for deployment
+          publish_dir: ./ # Specify the directory to publish
           destination_dir: ${{ github.ref_name }} # Deploy to a directory named after the branch
-
